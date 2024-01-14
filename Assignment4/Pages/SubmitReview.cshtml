@@ -1,0 +1,91 @@
+﻿@page
+@model SubmitReviewModel
+@{
+     ViewData["Title"] = "Submit Review";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Please enter the details below.</p>
+
+<div>
+    <form method="post">
+        @* 
+        *@ 
+        <div class="book-section">
+            <div class="form-group row py-2">
+                @* Notes to self:
+            - DO NOT PUT id and names if asp-for is there!
+            - reference link: https://stackoverflow.com/questions/76072245/null-values-when-sent-onpost-from-form-asp-net-razor-pages  *@
+                <label class="pb-1" asp-for="review.bookInfo.title">Book Title: </label>
+                <input class="px-2 form-control" type="text" asp-for="review.bookInfo.title" required/>
+            </div>
+            <div class="form-group row py-2">
+                <label class="pb-1" asp-for="review.bookInfo.author">Author: </label>
+                <input class="px-2 form-control" type="text" asp-for="review.bookInfo.author" required/>
+            </div>
+            <div class="form-group row py-2">
+                <label class="pb-1" asp-for="review.bookInfo.pubYear">Publication Year: </label>
+                <input class="px-2 form-control" type="text" asp-for="review.bookInfo.pubYear" required/>
+            </div>
+            <div class="row py-2">
+                <label class="pb-1" asp-for="genreCode">Genre: </label>
+
+                @*I am using the Dewey Decimal classification for this because there are a lot of different subgroups for Fiction and non-fiction
+                    sources= https://en.wikipedia.org/wiki/Dewey_Decimal_Classification
+                *@
+                <select class="custom-select" asp-for="genreCode">
+                    <option selected>Choose Classification ...</option>
+                    <option value="000">Computer Science, Information and General Works</option>
+                    <option value="100">Philosphy and Psychology</option>
+                    <option value="200">Religion</option>
+                    <option value="300">Social Sciences</option>
+                    <option value="400">Language</option>
+                    <option value="500">Pure Science</option>
+                    <option value="600">Technology</option>
+                    <option value="700">Arts and Recreation</option>
+                    <option value="800">Literature</option>
+                    <option value="900">History and Geography</option>
+                </select>
+            </div>
+        </div>
+        @*
+             *@
+
+        <div class="review-section">
+               @*  *@
+            <div class="form-group row py-2">
+                <label class="pb-1" asp-for="review.reviewerInfo.name">Reviewer Name: </label>
+                <input class="px-2 form-control" type="text" asp-for="review.reviewerInfo.name" required>
+            </div>
+
+            <div class="form-group row py-2">
+                @* change this to dropdown *@
+                <label class="pb-1" asp-for="review.reviewerInfo.rating">Rating: </label>
+                <select class="custom-select" asp-for="review.reviewerInfo.rating">
+                    <option selected>Choose Rating ...</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+
+            <div class="form-group row py-2">
+                <label class="pb-1" asp-for="review.reviewerInfo.reviewDescription">What do you think of this book?</label>
+                <textarea class="form-control" asp-for="review.reviewerInfo.reviewDescription" cols="30" rows="10">
+                    Kindly enter your review here.
+                </textarea>
+            </div>
+        </div>
+            @* 
+         *@
+        <div class="py-3">
+             <button class="btn btn-primary btn-lg" type="submit">Add Review</button>
+        </div>
+    </form>
+
+</div>
+

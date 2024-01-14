@@ -1,0 +1,71 @@
+﻿@page
+@model ReviewAddedModel
+@{
+    ViewData["Title"] = $"Your review for {@Model._review.bookInfo.title} has been added!";
+}
+<h1>@ViewData["Title"]</h1>
+<p>View your review:</p>
+
+<div class="container">
+    <div class="card bg-light p-3">  
+        <div class="book-info pt-4 pb-3">
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Book Title: </p>
+                    <p class="col-8">@Model._review.bookInfo.title</p>
+                </div>
+            </div>
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Author: </p>
+                    <p class="col-8">@Model._review.bookInfo.author</p>
+                </div>
+            </div>
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Genre: </p>
+                    <p class="col-8">@Model._review.bookInfo.genre</p>
+                </div>
+            </div>
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Year Published: </p>
+                    <p class="col-8">@Model._review.bookInfo.pubYear</p>
+                </div>
+            </div>
+        </div>
+        <div class="review pt-3 pb-4">
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Reviewer: </p>
+                    <p class="col-8">@Model._review.reviewerInfo.name</p>
+                </div>
+            </div>
+            <div class="container pb-2">
+                <div class="row">
+                    <p class="col-4 fw-bold">Rated this book: </p>
+                    <p class="col-8">@Model._review.reviewerInfo.rating stars</p>
+                </div>
+            </div>
+            <div class="container pb-2">
+                <p class="mb-1 fw-bold">Description :</p>
+                <p>@Model._review.reviewerInfo.reviewDescription</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="d-flex flex-row justify-content-center">
+            <p class="p-3">
+                <a class="btn btn-primary btn-lg" asp-page="/SubmitReview" role="button">Submit Another Review</a>
+            </p>
+            <p class="p-3">
+                <a class="btn btn-secondary btn-lg" asp-page="/ViewReview" role="button">View Recently Added Review</a>
+            </p>
+        </div>
+    </div>
+
+    
+
+</div>
+
